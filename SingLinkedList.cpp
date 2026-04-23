@@ -54,5 +54,6 @@ public:
         }
 
         nodeBaru->next = current;
-        
+        previous->next = nodeBaru;
+           
 }
