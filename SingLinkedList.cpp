@@ -17,5 +17,42 @@ public:
         START = NULL;
     }
     void addNode ()
-    
+    {
+        int nim;
+        cout << "\nMasukkan Nomor Mahasiswa : ";
+        cin >> nim;
+
+        Node *nodeBaru = new Node;
+        nodeBaru->nomhs = nim;
+
+        if (START == NULL || nim <= START->nomhs)
+        {
+            if (START != NULL && nim == START->nomhs)
+            {
+                cout << "\nDuplikasi nomhs tidak diijinkan\n";
+                return;
+            }
+
+            nodeBaru->next = START;
+            START = nodeBaru;
+            return;
+        }
+
+        Node *previous = START;
+        Node *current = START;
+
+        while (current != NULL && nim > current->nomhs)
+        {
+            if (nim == current->nomhs)
+            {
+                cout << "\nDuplikasi nomhs tidak diijinkan\n";
+                return;
+            }
+
+            previous = current;
+            current = current->next;
+        }
+
+        nodeBaru->next = current;
+        
 }
